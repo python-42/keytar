@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.jlh.keytar.Main",
+            "projectName": "keytar",
+            "vmArgs": "-Djava.library.path=${fileWorkspaceFolder}${pathSeparator}target${pathSeparator}natives -Dkeytar.keyset-config-file=src/test/resources/testKeyboardMapConfig.json -Dlog4j.configurationFile=${fileWorkspaceFolder}${pathSeparator}log4j.xml"
+        }
+
+    ]
+}
