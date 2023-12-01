@@ -84,6 +84,7 @@ public class ControllerInput {
         
         eventMap.put("y", this::confirmInput);
         eventMap.put("rz", this::handleWhammy);
+        eventMap.put("ry", this::doNothing);
         eventMap.put("pov", this::mouseMovement);
         logger.debug("Event map setup complete, " + eventMap.size() + " keys / axes bound.");
 
@@ -99,14 +100,45 @@ public class ControllerInput {
             controller.poll();
             queue = controller.getEventQueue();
             while (queue.getNextEvent(e)) {
-                
-                id = e.getComponent().getIdentifier().getName();
+                id = correctComponentID(e.getComponent().getIdentifier().getName());
                 eventMap.getOrDefault(
-                    e.getComponent().getIdentifier().getName(), (Float f) -> {logger.debug("Component with identifier " + e.getComponent().getName() + " not bound to an action.");}
+                    id, (Float f) -> {logger.debug("Component with identifier " + e.getComponent().getName() + " not bound to an action.");}
                 ).accept(e.getValue());
                 
-                logger.trace("Component " + id + " reads value " + e.getValue());
+                if(id != "ry") {//Accelerometer
+                    logger.trace("Component " + id + " reads value " + e.getValue());
+                }
             }
+        }
+    }
+
+    /**
+     * Component names appear to be inconsistent between operating systems, so this converts them to a universal ID
+     */
+    private String correctComponentID(String s) {
+        switch (s) {
+            case "Select":
+                return "10";
+            case "Mode":
+                return "12";
+            case "A":
+                return "0";
+            case "B":
+                return "1";
+            case "C":
+                return "2";
+            case "X":
+                return "3";
+            case "Y":
+                return "4";
+            case "Z":
+                return "5";
+            case "Left Thumb 2":
+                return "8";
+            case "Right Thumb 2":
+                return "9";
+            default:
+                return s;
         }
     }
 
@@ -261,6 +293,10 @@ public class ControllerInput {
 
     private void handleWhammy(float value) {
         whammyVal = Math.round(value * 2);
+    }
+
+    private void doNothing(float value) {
+        //To hide the accelerometer in logging
     }
 
     private void sendEventJson(String name) {
