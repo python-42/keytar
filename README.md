@@ -2,7 +2,7 @@
 Software which allows a Guitar Hero live controller to be used as a keyboard. 
 
 ## Usage
-Download the zip from the releases page. This contains the JAR, as a well as three configuration files. Running the JAR with no arguments will use the built-in GUI and default keysets. This configuration works well and is suggested for first time users. 
+Download the zip from the releases page. This contains the JAR, as a well as three configuration files. Running the JAR will use the built-in GUI and default keysets. This configuration works well and is suggested for first time users. 
 
 ## Configuration
 Keytar contains several configuration options across several files. 
