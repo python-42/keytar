@@ -8,7 +8,7 @@ Download the zip from the releases page. This contains the JAR, as a well as thr
 Keytar contains several configuration options across several files. 
 
 ### Java Properties
-The highest level configuration occurs in the `keytar.properties` file. This file must be placed in the same directory as the JAR, and named the same as well. System properties may also be specifed via command line options, however the `keytar.properties` file must still exist. Command line options override options configured in the file. 
+The highest level configuration occurs in the `keytar.properties` file. This file must be placed in the same directory as the JAR, and named the same as well. System properties may also be specifed via command line options, however the `keytar.properties` file must still exist. Command line options override options configured in the file. Unfortunately, the `java.library.path` property must be configured via a command line argument. The path must point to the `natives` directory.
 
 ### Logging
 Keytar uses Log4j for logging. Any logging configuration should be done in an XML file which follows the log4j rules. Note that if stdout is captured by the GUI (see above), ASCII color characters will be removed. This means that colored logging is safe to use, the default configuration uses color logging.  
