@@ -28,7 +28,7 @@ class TestKeyboardMap {
      * Switch keymap and check success and attempt to switch keymap to non-existant value
      */
     @Test void testKeymapSwitcher() {
-        assertEquals(2, map.getKeysetCount());
+        assertEquals(3, map.getKeysetCount());
         assertEquals(0, map.getCurrentKeyset());
         
         assertEquals(true, map.setKeymap(1));
